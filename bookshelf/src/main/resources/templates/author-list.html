@@ -1,0 +1,70 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Bookshelf</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/addPage.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/tablo.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/button.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/searchBar.css}" />
+<body>
+</head>
+
+<body style="background-image: url('https://pbs.twimg.com/media/Cstwt0zWgAE2KCN.jpg:large');">
+	<div id="main" style="width: 100%; height: 100%">
+
+
+		<div>
+			
+			<div>
+				<div class="centered">
+					<ul class="button-group">
+						<li><a class="large red button" href="/book/list">Kitaplar</a></li>
+						<li><a class="large red button" href="/author/list">Yazarlar</a></li>
+						<li><a class="large red button" href="/book/save">Kitap
+								Kayıt</a></li>
+						<li><a class="large red button" href="/author/save">Yazar
+								Kayıt</a></li>
+					</ul>
+				</div><h3>Kitaplar</h3>
+			<section class="webdesigntuts-workshop">
+				<form th:action="@{/author/search}">
+					<input type="text" name="keyword" id="keyword" th:value="${keyword}" placeholder="Yazar ismi.." required>
+					<button>Search</button>
+				</form>
+			</section> 
+
+			<div class="table-wrapper">
+				<table class="fl-table">
+						<thead>
+							<tr>
+								<th>Yazar No</th>
+								<th>Yazar İsmi Soyisim</th> 
+								<th>İşlem</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="authors : ${authors}"> 
+							<td th:text="${authors.authorId}"></td>
+							<td th:text="${authors.authorName} +' '+ ${authors.authorSurname}"></td> 
+							<td>   
+									<!-- 								<a th:href="@{'/author/update/' + ${authors.authorId}}">Güncelle</a> -->
+									&nbsp;&nbsp;&nbsp;&nbsp; <a
+									th:href="@{'/author/list/' + ${authors.authorId}}">Sil</a>
+								</td>
+							</tr>
+						<tbody>
+				</table>
+			</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>
+
+
+</body>
+</html>
